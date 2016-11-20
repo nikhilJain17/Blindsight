@@ -16,15 +16,24 @@ api = None
 
 if __name__ == '__main__':
 	# authorize the api
-	auth = tweepy.OAuthHandler('DONOTREAD')
-	auth.set_access_token('NOT NOW NOT EVER')
+	auth = tweepy.OAuthHandler('"stop looking"')
+	auth.set_access_token('DONT LOOK HERE PLEASE')
 
 	api = tweepy.API(auth)
 	
-	# 1a. search for phone number
-	stringified = str(api.search("123 Defhacks avenue"))
+	# 1a. search for addresses
+	stringified = str(api.search("123 Defhacks Avenue"))
 	usr = "skota121"
-	print stringified.find(usr)
+	
+	address_occurences = stringified.count(usr) / 5
+	print "address occurences: ", address_occurences
+
+	# 1b. search for phone numbers
+	stringified = str(api.search("453-958-1904"))
+	usr = "skota121"
+	
+	phone_occurences = stringified.count(usr) / 5
+	print "phone occurences", phone_occurences
 
 
 
