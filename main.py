@@ -1,4 +1,5 @@
 import tweepy
+import json
 
 # initialize the api object to be null
 api = None
@@ -14,11 +15,16 @@ api = None
 
 
 if __name__ == '__main__':
+	# authorize the api
+	auth = tweepy.OAuthHandler('DONOTREAD')
+	auth.set_access_token('NOT NOW NOT EVER')
 
 	api = tweepy.API(auth)
 	
-	user = api.get_user('skota121')
-	print user.followers_count
+	# 1a. search for phone number
+	stringified = str(api.search("123 Defhacks avenue"))
+	usr = "skota121"
+	print stringified.find(usr)
 
 
 
