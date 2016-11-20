@@ -1,23 +1,28 @@
-import httplib
-import oauth2
-import urllib2
+import tweepy
 
-def sendgetrequest( url ):
-	conn = httplib.HTTPConnection(url)
-	conn.request("HEAD","/index.html")
-	res = conn.getresponse()
-	print res.status, res.reason
+# initialize the api object to be null
+api = None
 
-url = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=skota121'
-params = '&oauth_consumer_key='
+# send the auth tokens and whatnot
+# def auth ():
+# 	auth = tweepy.OAuthHandler('3vak8cyOxT0dHvbYvqUZ7i6Hp', 'tACDJJL56ZQNWTSHsUN2bYYn7qsuxRjFNvpVvfNYMHocAZqRdl')
+# 	auth.set_access_token('1581800299-aiZuhraRWWWacTCegHpMFiUIPJDv1q2uv6x3udE', '47jzAZr4CqrZhvjsTY2GLwW750NC4qrJ16jATauUgrnL2')
 
-url = url + params
+# 	api = tweepy.API(auth)
 
-print "\n\n\n" + url
-# print sendgetrequest(url)
+# 	print "done"
 
-content = urllib2.urlopen(url).read()
-print content
-							 
+
+if __name__ == '__main__':
+
+	api = tweepy.API(auth)
+	
+	user = api.get_user('skota121')
+	print user.followers_count
+
+
+
+
+
 
 
